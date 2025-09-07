@@ -22,7 +22,7 @@ func typeCheck() {
 	i := interface{}("hello")
 
 	s := i.(string)
-	fmt.Println(s)
+	fmt.Println("-=-=-=  ", s)
 
 	s, ok := i.(string)
 	fmt.Println(s, ok)
@@ -30,8 +30,8 @@ func typeCheck() {
 	f, ok := i.(float64)
 	fmt.Println(f, ok)
 
-	f = i.(float64) // panic
-	fmt.Println(f)
+	//f = i.(float64) // panic
+	//fmt.Println(f)
 }
 
 func typeCheck2(i interface{}) {
@@ -53,10 +53,14 @@ func main() {
 	Scale2(&v, 10)
 	fmt.Println("--> ", v.X, v.Y)
 
-	//typeCheck()
+	typeCheck()
 	typeCheck2(1)
+	fmt.Println("----------------------------------------------")
 	typeCheck2("s")
 	typeCheck2(struct {
 		name string
 	}{"aref"})
+	typeCheck2(struct {
+		lastName string
+	}{"mousavi"})
 }

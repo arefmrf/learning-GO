@@ -27,15 +27,17 @@ func main() {
 	for name, ip := range hosts {
 		fmt.Printf("%v: %v\n", name, ip)
 	}
-	///////////////////////////////////////
+	fmt.Println("///////////////////////////////////////")
 	var s student
-	fmt.Printf("%+v", s)
+	fmt.Printf("%+v\n", s)
 	st := new(student) // Allocated on heap
 	// st := student{}    Usually on stack
 	st.grades = make(map[string]int)
 	st.grades["s"] = 1
 	fmt.Printf("%+v\n", st)
 	fmt.Printf("%#v\n", st)
+	addToMarks(&(st.marks))
+	fmt.Println(st.marks)
 	addToMarks(&(st.marks))
 	fmt.Println(st.marks)
 }
