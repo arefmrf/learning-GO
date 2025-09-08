@@ -31,7 +31,7 @@ func main() {
 	var s student
 	fmt.Printf("%+v\n", s)
 	st := new(student) // Allocated on heap
-	// st := student{}    Usually on stack
+	// st := student{} //   Usually on stack but using Printf boxes it, so goes to heap
 	st.grades = make(map[string]int)
 	st.grades["s"] = 1
 	fmt.Printf("%+v\n", st)

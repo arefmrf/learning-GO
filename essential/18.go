@@ -30,6 +30,7 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("%T\n", bs)
+	fmt.Printf("%q\n", bs)
 	data := string(bs)
 	fmt.Println(data)
 	fmt.Println("=================")
