@@ -34,21 +34,33 @@ func writer(c chan int, m *sync.RWMutex, wg *sync.WaitGroup) {
 }
 func main() {
 	var m sync.RWMutex
+	wg := sync.WaitGroup{}
 	var rs, ws int
 	rsCh := make(chan int)
 	wsCh := make(chan int)
 	go func() {
 		for {
 			select {
-			case n := <-rsCh:
-				rs += n
-			case n := <-wsCh:
-				ws += n
+			case n, ok := <-rsCh:
+				if !ok {
+					rsCh = nil
+				} else {
+					rs += n
+				}
+			case n, ok := <-wsCh:
+				if !ok {
+					wsCh = nil
+				} else {
+					ws += n
+				}
+			}
+			if rsCh == nil && wsCh == nil {
+				break
 			}
 			fmt.Printf("%s%s\n", strings.Repeat("R", rs), strings.Repeat("W", ws))
 		}
 	}()
-	wg := sync.WaitGroup{}
+
 	for i := 0; i < 10; i++ {
 		wg.Add(1)
 		go reader(rsCh, &m, &wg)
@@ -58,4 +70,6 @@ func main() {
 		go writer(wsCh, &m, &wg)
 	}
 	wg.Wait()
+	close(rsCh) // closing cause stop leaking params
+	close(wsCh)
 }

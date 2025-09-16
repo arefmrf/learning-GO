@@ -29,15 +29,14 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%T\n", bs)
-	fmt.Printf("%q\n", bs)
+	fmt.Printf("***** %T\n", bs)
+	fmt.Printf("##### %q\n", bs)
 	data := string(bs)
 	fmt.Println(data)
 	fmt.Println("=================")
 	words := strings.Fields(data)
 	for _, word := range words {
-		fmt.Println(string(word))
-		fmt.Println("--")
+		fmt.Println("--", word)
 	}
 
 	var i any = "s" // shortcut for empty interface

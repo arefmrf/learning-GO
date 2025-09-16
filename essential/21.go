@@ -28,8 +28,9 @@ func main() {
 		<-done // Wait for the second goroutine to finish
 		fmt.Println("***closing***")
 		close(numChan)
+		close(done)
 	}()
-
+	fmt.Println("!@#!@#!@#!@#!@#!@#!@#!@#!@#")
 	for num := range numChan {
 		fmt.Println("** num: ", num)
 	}

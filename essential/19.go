@@ -13,8 +13,11 @@ func say(s string) {
 }
 
 func sum(s []int, c chan int) {
+	fmt.Println("=-=-=")
 	sum := 0
 	for _, v := range s {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println("--->", sum)
 		sum += v
 	}
 	c <- sum // send sum to c
