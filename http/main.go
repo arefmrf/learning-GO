@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
+func helloHandler(w http.ResponseWriter, _ *http.Request) {
 	_, err := fmt.Fprint(w, "<h1>Hello, World!</h1>")
 	//_, err := w.Write([]byte("<h1>Hello, World!</h1>"))
 	if err != nil {
