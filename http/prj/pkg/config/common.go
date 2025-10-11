@@ -1,5 +1,5 @@
 package config
 
-import "web/config"
+import "prj/config"
 
 var configurations config.Config

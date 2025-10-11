@@ -45,12 +45,19 @@ func main() {
 	fmt.Println("-------------------------")
 	ch5 := make(chan string)
 	go goOne(ch5)
-
-	select {
-	case msg := <-ch5:
-		fmt.Println(msg)
-	case <-time.After(time.Second * 1):
-		fmt.Println("Timeout")
+	go goOne(ch5)
+	x := true
+	for {
+		select {
+		case msg := <-ch5:
+			fmt.Println(msg)
+		case <-time.After(time.Second * 3):
+			fmt.Println("Timeout")
+			x = false
+		}
+		if !x {
+			break
+		}
 	}
 
 }
