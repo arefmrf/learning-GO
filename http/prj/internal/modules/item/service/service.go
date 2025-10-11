@@ -7,7 +7,7 @@ import (
 )
 
 type Service struct {
-	repo *repository.ItemRepository
+	repo repository.ItemRepositoryInterface
 }
 
 func NewService() *Service {

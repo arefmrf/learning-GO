@@ -1,4 +1,4 @@
-package app
+package bootstrap
 
 import (
 	"fmt"
@@ -16,10 +16,6 @@ func Run() {
 	config.Set()
 	configs := config.Get()
 	database.Connect()
-
-	//itemRepo := repository.New()
-	//itemService := item.NewService(itemRepo)
-	//itemHandler := item.NewController(itemService)
 
 	routing.Init()
 	routing.RegisterRoutes()
