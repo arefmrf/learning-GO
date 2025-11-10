@@ -22,3 +22,16 @@ func (r *ItemRepository) List(ctx context.Context, limit, offset int) ([]model.I
 	}
 	return items, nil
 }
+
+func (r *ItemRepository) Create(ctx context.Context, input *model.CreateItem) (*model.Item, error) {
+	dbItem := model.Item{
+		Name:  input.Name,
+		Price: input.Price,
+	}
+
+	if err := r.DB.WithContext(ctx).Create(&dbItem).Error; err != nil {
+		return nil, err
+	}
+
+	return &dbItem, nil
+}

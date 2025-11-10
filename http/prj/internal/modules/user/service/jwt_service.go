@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"github.com/golang-jwt/jwt/v5"
 	"time"
 )
@@ -19,17 +18,18 @@ func NewJWTService() JWTService {
 }
 
 type CustomClaims struct {
-	UserID   uint   `json:"user_id"`
+	UserID   uint   `json:"user_id"` // we can use this later
 	Username string `json:"username"`
 	jwt.RegisteredClaims
 }
 
 func (j *jwtService) GenerateToken(username string) (string, error) {
 	claims := CustomClaims{
-		Username: fmt.Sprint(username),
+		Username: username,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(2 * time.Hour)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
+			Subject:   username, // optional, but nice to set
 		},
 	}
 

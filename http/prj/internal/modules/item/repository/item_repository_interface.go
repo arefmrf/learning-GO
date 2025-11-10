@@ -7,4 +7,5 @@ import (
 
 type ItemRepositoryInterface interface {
 	List(ctx context.Context, limit, offset int) ([]model.Item, error)
+	Create(ctx context.Context, input *model.CreateItem) (*model.Item, error)
 }

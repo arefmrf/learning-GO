@@ -4,6 +4,7 @@ app:
 server:
   host: "localhost"
   port: "8080"
+  JwtSecret: "secret"
 
 db:
   host: "localhost"

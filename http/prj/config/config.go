@@ -11,8 +11,9 @@ type App struct {
 }
 
 type Server struct {
-	Host string
-	Port string
+	Host      string
+	Port      string
+	JwtSecret string
 }
 
 type DB struct {

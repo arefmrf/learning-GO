@@ -5,3 +5,8 @@ type Item struct {
 	Name  string `json:"name"`
 	Price int64  `json:"price"`
 }
+
+type CreateItem struct {
+	Name  string `json:"name"`
+	Price int64  `json:"price"`
+}
