@@ -55,14 +55,15 @@ func (h *Controller) Login(w http.ResponseWriter, r *http.Request) {
 
 	ctx := r.Context()
 
-	user, err := h.service.Login(ctx, payload.Username, payload.Password)
+	token, err := h.service.Login(ctx, payload.Username, payload.Password)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
 
+	w.Header().Set("Content-Type", "application/json")
 	_ = json.NewEncoder(w).Encode(map[string]any{
 		"message": "login successful",
-		"user":    user.Username,
+		"token":   token,
 	})
 }
