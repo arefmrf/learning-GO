@@ -8,11 +8,17 @@ import (
 	"gorm.io/gorm"
 )
 
-func NewGormDB(cfg *config.Config) *gorm.DB {
+var DB *gorm.DB
+
+func NewGormDB(cfg *config.Config) {
 	db, err := gorm.Open(postgres.Open(cfg.DBUrl), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("Failed to connect database: %v", err)
 	}
 
-	return db
+	DB = db
+}
+
+func Connection() *gorm.DB {
+	return DB
 }
