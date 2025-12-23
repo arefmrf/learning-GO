@@ -1,0 +1,11 @@
+server:
+  host: "localhost"
+  port: "8080"
+  JwtSecret: "secret"
+
+db:
+  host: "localhost"
+  port: "5432"
+  username: "postgres"
+  password: "1234"
+  name: "web"
