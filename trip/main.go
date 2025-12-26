@@ -1,14 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"trip/internal/domain"
+	"trip/cmd"
 )
 
 func main() {
-	x := domain.DefaultCapacity()
-	fmt.Println(x)
-	if err := domain.ValidateCapacity(x); err != nil {
-		fmt.Println(err)
-	}
+	cmd.Execute()
 }

@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
+	"trip/pkg/bootstrap"
 )
 
 func init() {

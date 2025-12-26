@@ -1,7 +1,9 @@
-package persistence
+package model
+
+import "trip/internal/persistence"
 
 type HostDaily struct {
-	BaseModel
+	persistence.BaseModel
 
 	UID    string `gorm:"size:26;uniqueIndex"`
 	HostID uint   `gorm:"index"`
@@ -14,7 +16,7 @@ type HostDaily struct {
 
 	Discount int16 `gorm:"default:0"`
 
-	Capacity      JSONB `gorm:"type:jsonb"`
+	Capacity      persistence.JSONB `gorm:"type:jsonb"`
 	TotalCapacity int16
 
 	MaleBooked   int16 `gorm:"default:0"`

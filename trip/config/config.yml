@@ -4,8 +4,8 @@ server:
   JwtSecret: "secret"
 
 db:
-  host: "localhost"
+  host: "188.121.112.42"
   port: "5432"
-  username: "postgres"
-  password: "1234"
-  name: "web"
+  username: "trip"
+  password: "trip"
+  name: "trip"

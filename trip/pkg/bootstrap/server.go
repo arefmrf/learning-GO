@@ -13,6 +13,7 @@ type Server struct {
 }
 
 func Run() {
+	log.Printf("🚀 Server running at http://localhost\n")
 	config.Set()
 	configs := config.Get()
 	database.Connect()

@@ -2,14 +2,14 @@ package services
 
 import (
 	"trip/internal/domain"
-	"trip/internal/persistence"
+	"trip/internal/persistence/host/model"
 
 	"gorm.io/gorm"
 )
 
 func SaveHostDaily(
 	db *gorm.DB,
-	daily *persistence.HostDaily,
+	daily *model.HostDaily,
 	hostCategory int,
 ) error {
 
@@ -37,7 +37,7 @@ func SaveHostDaily(
 	return db.Save(daily).Error
 }
 
-func DeleteHostDaily(db *gorm.DB, daily *persistence.HostDaily) error {
+func DeleteHostDaily(db *gorm.DB, daily *model.HostDaily) error {
 	d := domain.HostDaily{
 		MaleBooked:   int(daily.MaleBooked),
 		FemaleBooked: int(daily.FemaleBooked),
